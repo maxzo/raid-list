@@ -75,7 +75,7 @@ export class RaidListComponent implements OnInit {
 
   refreshList() {
     const gym = this.gymControl.value;
-    const bossName = this.bossControl.value ? this.bossControl.value.name : '';
+    const bossName = this.bossControl.value ? (this.bossControl.value.name || '') : '';
     const go = this.go;
 
     if (gym && gym.name) {
