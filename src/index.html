@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+  <meta charset="utf-8">
+  <title>Raid List</title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#7B1FA2">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="msapplication-starturl" content="/">
+</head>
+<body class="mat-app-background">
+  <app-root></app-root>
+
+  <noscript>
+    <h3 style="color: rgba(255,255,255,.7); font-family: Helvetica; margin: 2rem;">
+        App no disponible sin Javascript
+    </h3>
+  </noscript>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/service-worker.js')
+      .then((registration) => {
+        console.log('SW registered');
+      })
+      .catch((err) => {
+        console.log('SW error', err);
+      });
+    }
+  </script>
+</body>
+</html>

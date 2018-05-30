@@ -1,0 +1,45 @@
+<div class="raid-container">
+  <mat-form-field class="full-width-field">
+    <input type="text" placeholder="Jefe" (keyup)="onChange($event)" aria-label="Number" matInput [formControl]="bossControl" [matAutocomplete]="bossAuto">
+    <button mat-button *ngIf="bossControl.value" matSuffix mat-icon-button aria-label="Clear" (click)="clearBoss()">
+      <mat-icon>close</mat-icon>
+    </button>
+    <mat-autocomplete #bossAuto="matAutocomplete" [displayWith]="displayBossFn" (optionSelected)="onChange($event)">
+      <mat-option *ngFor="let boss of filteredBosses | async" [value]="boss">
+        <img class="boss-image" aria-hidden src="assets/imgs/pokemon/{{boss.image}}" />
+        <span>{{ boss.name }}</span>
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+  <mat-form-field class="full-width-field">
+    <input type="text" placeholder="Gym" aria-label="Number" matInput [formControl]="gymControl" [matAutocomplete]="gymAuto">
+    <button mat-button *ngIf="gymControl.value" matSuffix mat-icon-button aria-label="Clear" (click)="clearGym()">
+      <mat-icon>close</mat-icon>
+    </button>
+    <mat-autocomplete #gymAuto="matAutocomplete" [displayWith]="displayGymFn" (optionSelected)="onChange($event)">
+      <mat-option *ngFor="let gym of filteredGyms | async" [value]="gym">
+        {{ gym.name }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Go" (keyup)="onChange($event)" [(ngModel)]="go">
+    <button mat-button *ngIf="go" matSuffix mat-icon-button aria-label="Clear" (click)="clearGo()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <mat-form-field>
+    <textarea matInput rows="15" [(ngModel)]="raidList"></textarea>
+  </mat-form-field>
+
+  <mat-checkbox (change)="onChange($event)" [(ngModel)]="fullList">Lista completa</mat-checkbox>
+
+  <div class="button-row" *ngIf="raidList">
+    <button mat-fab color="primary" ngxClipboard [cbContent]="raidList" (cbOnSuccess)="copySuccess()">
+      <mat-icon aria-label="Copy">content_copy</mat-icon>
+    </button>
+  </div>
+</div>

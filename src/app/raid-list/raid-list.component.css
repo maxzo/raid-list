@@ -1,0 +1,26 @@
+.raid-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.raid-container > * {
+  width: 100%;
+}
+
+.full-width-field {
+  width: 100%;
+}
+
+.button-row {
+  display: flex;
+  justify-content: flex-end;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+.boss-image {
+  height: 40px;
+  vertical-align: middle;
+  padding-right: 5px;
+}
